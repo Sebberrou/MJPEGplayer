@@ -5,7 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 
-namespace MJPEGplayer
+namespace MPlayer
 {
 	public partial class App : Application
 	{
@@ -13,7 +13,7 @@ namespace MJPEGplayer
 		{
 			InitializeComponent();
 
-			MainPage = new MJPEGplayer.MainPage();
+			MainPage = new MPlayer.MainPage();
 		}
 
 		protected override void OnStart ()

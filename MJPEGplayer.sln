@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJPEGplayer.Android", "MJPEGplayer\MJPEGplayer.Android\MJPEGplayer.Android.csproj", "{194C332F-8895-4320-B9E9-82FA30469D1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPlayer.Android", "MJPEGplayer\MJPEGplayer.Android\MPlayer.Android.csproj", "{194C332F-8895-4320-B9E9-82FA30469D1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJPEGplayer.iOS", "MJPEGplayer\MJPEGplayer.iOS\MJPEGplayer.iOS.csproj", "{E9B76B92-6CB0-42B2-8EE7-C55EB8A5D145}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPlayer.iOS", "MJPEGplayer\MJPEGplayer.iOS\MPlayer.iOS.csproj", "{E9B76B92-6CB0-42B2-8EE7-C55EB8A5D145}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJPEGplayer.UWP", "MJPEGplayer\MJPEGplayer.UWP\MJPEGplayer.UWP.csproj", "{FE0C99E7-ABCF-4DB3-9E5C-4B4E9A62FFD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPlayer.UWP", "MJPEGplayer\MJPEGplayer.UWP\MPlayer.UWP.csproj", "{FE0C99E7-ABCF-4DB3-9E5C-4B4E9A62FFD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJPEGplayer", "MJPEGplayer\MJPEGplayer\MJPEGplayer.csproj", "{C5507256-64EB-4651-89B1-F113C912F808}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPlayer", "MJPEGplayer\MJPEGplayer\MPlayer.csproj", "{C5507256-64EB-4651-89B1-F113C912F808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -123,9 +123,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\MJPEGplayer\MJPEGplayer.csproj">
-      <Project>{73421F80-C67E-4C3E-A6CF-861A9169C44C}</Project>
-      <Name>MJPEGplayer</Name>
+    <ProjectReference Include="..\MJPEGplayer\MPlayer.csproj">
+      <Project>{C5507256-64EB-4651-89B1-F113C912F808}</Project>
+      <Name>MPlayer</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

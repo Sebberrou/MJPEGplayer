@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="MJPEGplayer.UWP.App"
+    x:Class="MPlayer.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MJPEGplayer.UWP"
+    xmlns:local="using:MPlayer.UWP"
     RequestedTheme="Light">
 
 </Application>

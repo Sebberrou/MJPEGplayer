@@ -2,7 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>MPlayer</AssemblyName>
+    <RootNamespace>MPlayer</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\..\..\..\Documents\MJPEGplayer.html" Link="HTMLPage\MJPEGplayer.html" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
@@ -15,5 +21,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="HTMLPage\" />
   </ItemGroup>
 </Project>

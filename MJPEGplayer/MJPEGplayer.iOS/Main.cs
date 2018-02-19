@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace MJPEGplayer.iOS
+namespace MPlayer.iOS
 {
     public class Application
     {

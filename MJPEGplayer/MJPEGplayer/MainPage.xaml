@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MJPEGplayer"
-             x:Class="MJPEGplayer.MainPage">
+             xmlns:local="clr-namespace:MPlayer"
+             x:Class="MPlayer.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <local:MJPEGPlayer x:Name="player" Url="http://webcam.st-malo.com/axis-cgi/mjpg/video.cgi?resolution=640x480"
+                      VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                        />
 
+    <!--<WebView x:Name="webview" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"/>-->
 </ContentPage>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf8'>
+    <style media='screen'>
+      body{
+        background-color:#011001;
+        overflow:hidden;
+        padding:0;margin:0;
+      }
+      /* *{
+        box-sizing: border-box;
+      } */
+      #container{
+        width: 100%;
+        position: relative;
+      }
+      #canvas{
+        position: absolute;
+        top:0;left:0;
+        max-width:100%;
+      }
+      #mjpeg{
+        position: relative;
+        top:0;left:0;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+      #highlight{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity:0;
+        /* background: radial-gradient(transparent, white); */
+        background: white;
+        transition: opacity .2s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='container'>
+      <canvas id="canvas"></canvas>
+      <img id='mjpeg' alt=''>
+      <div id="highlight"></div>
+    </div>
+    <script type='text/javascript'>
+
+      /**
+       * VARIABLES
+       */
+      var error,
+      errorTimer,
+      lastTimeStamp = 0,
+      fps = 0,
+      time = 0,
+      url = null,
+      isPaused = true,
+      setup = false,
+      img = document.getElementById('mjpeg'),
+      parent = document.getElementById('container'),
+      highlight = document.getElementById('highlight'),
+      canvas = document.getElementById('canvas');
+
+      /**
+       * Event,handle mjpeg error and send them to C#
+       */
+      img.addEventListener('loadstart', function(e){
+        lastTimeStamp = e.timeStamp;
+        console.log('loadstart');
+        console.log(e);
+        clearTimeout(errorTimer);
+        errorTimer = setTimeout(error, 10000);
+        lastTimeStamp = 0;
+      });
+
+      img.addEventListener('load', function(e){
+          if (!setup) {
+            parent.style.height = e.target.height + "px";
+            setup = true;
+            isPaused = false;
+          }
+          if (lastTimeStamp == 0) {
+              lastTimeStamp = e.timeStamp;
+              time = 0;
+              console.log(time);
+          } else if (time == 0) {
+              time = (e.timeStamp - lastTimeStamp) * 3;
+              console.log(time);
+          }
+          else {
+              clearTimeout(errorTimer);
+              errorTimer = setTimeout(MJPEGerror, time);
+              return;
+          }
+          console.log(10000);
+
+          clearTimeout(errorTimer);
+          errorTimer = setTimeout(MJPEGerror, 10000);
+
+      });
+        img.addEventListener('error', function (e) {
+          if(!isPaused)
+            console.log("loading error");
+      });
+      window.addEventListener("resize",function(){
+        setup = false;
+      });
+      /**
+       * function should be called from C#
+       */
+        function play(newUrl = null) {
+         if(newUrl != null){
+           stop();
+           url = newUrl;
+          }
+         else if (!isPaused)
+             return;
+         setup = false,
+         img.src = url;
+
+       }
+
+      function pause(timeout = -1){
+        if(isPaused)
+          return;
+        isPaused = true;
+        clearTimeout(errorTimer);
+
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img,0,0,img.width,img.height);
+        img.src="";
+
+        if(timeout != -1){
+          setTimeout(play,timeout);
+        }
+      }
+      function stop(){
+        img.src="";
+        canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+        isPaused = true;
+        clearTimeout(errorTimer);
+      }
+        function snapshot() {
+            if (isPaused)
+                return;
+            shutter_effect();
+            pause(600);
+        }
+      // 'private' function
+      function refresh(){
+        console.log("refresh error");
+        url =  insertParam(url,'t', Date.now());
+        img.src = url;
+      }
+
+      function MJPEGerror(){
+        refresh();
+      }
+      function shutter_effect(){
+        highlight.style.opacity = .6;
+        setTimeout(function(){highlight.style.opacity = 0;}, 200);
+
+      }
+      function insertParam(url, key, value)
+      {
+          key = encodeURIComponent (key); value = encodeURIComponent (value);
+
+          var baseUrl = url.split("?");
+          var kvp = baseUrl[1].split('&');
+          if (kvp == '') {
+            return baseUrl[0] + '?' + key + '=' + value;
+          }
+          else {
+
+              var i = kvp.length; var x; while (i--) {
+                  x = kvp[i].split('=');
+
+                  if (x[0] == key) {
+                      x[1] = value;
+                      kvp[i] = x.join('=');
+                      break;
+                  }
+              }
+
+              if (i < 0) { kvp[kvp.length] = [key, value].join('='); }
+              return baseUrl[0] + "?" + kvp.join('&');
+          }
+      }
+      /**
+       * Testing
+       */
+      // play("http://webcam.st-malo.com/axis-cgi/mjpg/video.cgi?resolution=640x480");
+
+    </script>
+  </body>
+</html>

@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MJPEGplayer.UWP
+namespace MPlayer.UWP
 {
     public sealed partial class MainPage
     {
@@ -21,7 +21,7 @@ namespace MJPEGplayer.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new MJPEGplayer.App());
+            LoadApplication(new MPlayer.App());
         }
     }
 }

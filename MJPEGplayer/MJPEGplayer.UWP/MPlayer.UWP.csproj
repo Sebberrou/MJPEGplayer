@@ -149,12 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1"/>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MJPEGplayer\MJPEGplayer.csproj">
-      <Project>{73421F80-C67E-4C3E-A6CF-861A9169C44C}</Project>
-      <Name>MJPEGplayer</Name>
+    <ProjectReference Include="..\MJPEGplayer\MPlayer.csproj">
+      <Project>{C5507256-64EB-4651-89B1-F113C912F808}</Project>
+      <Name>MPlayer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
