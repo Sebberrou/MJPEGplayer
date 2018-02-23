@@ -36,5 +36,28 @@ namespace MPlayer
         {
             failedAction = null;
         }
-	}
+
+
+        // Methods handled by renderers
+        public event EventHandler PlayRequested;
+
+        public void Play()
+        {
+            PlayRequested?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler PauseRequested;
+
+        public void Pause()
+        {
+            PauseRequested?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler StopRequested;
+
+        public void Stop()
+        {
+            StopRequested?.Invoke(this, EventArgs.Empty);
+        }
+    }
 }

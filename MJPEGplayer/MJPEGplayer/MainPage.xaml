@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MPlayer"
              x:Class="MPlayer.MainPage">
-
-    <local:MJPEGPlayer x:Name="player" Url="http://webcam.st-malo.com/axis-cgi/mjpg/video.cgi?resolution=640x480"
+    <StackLayout>
+        <local:MJPEGPlayer x:Name="player" Url="http://webcam.st-malo.com/axis-cgi/mjpg/video.cgi?resolution=640x480"
                       VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                         />
-
-    <!--<WebView x:Name="webview" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"/>-->
+        <Button x:Name="PlayBtn" Text="Play" BorderRadius="100" BorderWidth="10" BorderColor="Black" Command="PlayClicked"/>
+        <Button x:Name="PauseBtn" Text="Pause" BorderRadius="100" BorderWidth="10" BorderColor="Black" Command="PauseClicked" />
+        <Button x:Name="StopBtn" Text="Stop" BorderRadius="100" BorderWidth="10" BorderColor="Black" Command="StopClicked" />
+    </StackLayout>
 </ContentPage>

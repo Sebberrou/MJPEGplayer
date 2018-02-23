@@ -13,6 +13,7 @@ namespace MPlayer
 		{
 			InitializeComponent();
             //player.RegisterFailedAction(msg => DisplayAlert("Alert", "Hello " + msg, "OK"));
+            
         }
         void OnButtonClicked(object sender, EventArgs e)
         { 
@@ -21,6 +22,18 @@ namespace MPlayer
         private void play(string url = null)
         {
             System.Diagnostics.Debug.WriteLine(String.Format("play({0})", url));
+        }
+        void PlayClicked()
+        {
+            player.play();
+        }
+        void PauseClicked()
+        {
+            player.pause();
+        }
+        void StopClicked()
+        {
+            player.stop();
         }
 
     }

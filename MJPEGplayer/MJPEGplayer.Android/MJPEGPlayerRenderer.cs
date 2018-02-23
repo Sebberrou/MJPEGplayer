@@ -48,8 +48,12 @@ namespace MPlayer.Droid
                 
                 //Control.EvaluateJavascript(String.Format("play({0})", e.NewElement.Url) );
                 InjectJS(JavaScriptFunction);
+                e.NewElement.PlayRequested += OnPlayRequested;
+                e.NewElement.PauseRequested += OnPauseRequested;
+                e.NewElement.StopRequested += OnStopRequested;
             }
         }
+
         void InjectJS(string script)
         {
             if (Control != null)
@@ -66,11 +70,11 @@ namespace MPlayer.Droid
                 var element = (MJPEGPlayer)sender; 
                 if( element.IsVisible == true)
                 {
-                    Play();
+                    //OnPlayRequested();
                 }
             }
         }
-        protected void Play(string url = null)
+        private void OnPlayRequested(object sender, EventArgs e)
         {
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
             {
@@ -81,7 +85,7 @@ namespace MPlayer.Droid
                 Control.LoadUrl(String.Format("javascript:play({0});", url));
             }
         }
-        protected void Pause()
+        private void OnPauseRequested(object sender, EventArgs e)
         {
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
             {
@@ -92,7 +96,7 @@ namespace MPlayer.Droid
                 Control.LoadUrl("javascript:pause();");
             }
         }
-        protected void Stop()
+        private void OnStopRequested(object sender, EventArgs e)
         {
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
             {
